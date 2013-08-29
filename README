@@ -1,0 +1,8 @@
+=========
+FF ROSTER
+=========
+
+Gives an optimized FF roster for auction sytle systems.
+Uses the greedy algorithm to sovle the knapsack problem - essentially we put the best-valued players in first.
+
+Runs other constraints on the playerlist. Eg; my players can't have criminal records, can't be already taken, etc.
