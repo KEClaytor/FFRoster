@@ -61,14 +61,21 @@ class PlayerStorage():
         self.addplayer(name,pos=pos,points=points,cost=cost)
         return
 
-    # Get the weight (points/cost) for a particular player
-    def getweight(self,get,fac=1):
-        weight = 0
-        (idxyn,idx) = self.getidx(get)
-        if idxyn:
-            # The +1 keeps us from div by zero
-            cost = self.cost[idx]/fac+1
-            weight = self.points[idx]/cost
+    # Copy the elements of the class into a new one
+    # Needed a value copy for repetitive iteration of roster finding
+    def copy(self):
+        copy = PlayerStorage()
+        for idx in range(len(self)):
+            (name,pos,points,cost) = self.getplayer(idx)
+            copy.addplayer(name,pos=pos,points=points,cost=cost)
+        return copy
+
+    # Get the weight (points/cost) for all players
+    def getweight(self,fac=1):
+        weight = [0]*len(self)
+        for idx in range(len(self)):
+            cost = self.cost[idx]/fac + 1
+            weight[idx] = self.points[idx]/cost
         return weight
 
     # Useful to dump the contents if we're debugging
