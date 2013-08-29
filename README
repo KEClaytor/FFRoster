@@ -6,3 +6,24 @@ Gives an optimized FF roster for auction sytle systems.
 Uses the greedy algorithm to sovle the knapsack problem - essentially we put the best-valued players in first.
 
 Runs other constraints on the playerlist. Eg; my players can't have criminal records, can't be already taken, etc.
+
+I don't think this is a particularly good way of getting a FF roster, but it was fun to implement.
+
+==========
+How to use
+==========
+The program first pulls data from the web / files.
+'python getPoliceBlotter.py
+python getPlayerLists.py'
+will run these. The second pulls player FF points values / costs from files that look like costSSS.dat or ptsSS.dat
+They pickle the outputs in .pk files.
+
+Next MakeGreedyRoster can be run.
+'python MakeGreedyRoster.py'
+This will find the best value (points/cost) players and then add those to your team until the budget (mycash) is reached.
+
+To update while you're doing the auction;
+Add player names from those who were purchased to the file purchased.dat
+Add player names, position, and the $ you paid (tab separated) to the file myteam.dat.
+
+I found it useful to have the full list of players, to decide if I wanted to bid on them / how much. If others nominated them. This appears above your team purchase suggestion.
